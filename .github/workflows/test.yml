@@ -1,0 +1,26 @@
+name: Something something node18
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  whatever:
+    name: Stuff
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Setup Node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: PNPM install
+        uses: ./.github/workflows/pnpm-install
+
+      - name: Run stuff
+        run: |
+          pnpm run runMigrations
